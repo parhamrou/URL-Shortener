@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 	"github.com/labstack/echo/v4"
-	"github.com/parhamrou/URL-Shortener/link"
+	"github.com/parhamrou/URL-Shortener/server/link"
 )
 
 func SaveUrl(c echo.Context) error {
