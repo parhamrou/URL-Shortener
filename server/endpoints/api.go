@@ -7,9 +7,17 @@ import (
 	db "github.com/parhamrou/URL-Shortener/server/database"
 )
 
+type body struct {
+	URL string `json:"url"`
+}
+
 
 func SaveUrl(c echo.Context) error {
-	url := c.Param("url")
+	var reqbody body
+	if err := c.Bind(&reqbody); err != nil {
+		return err
+	}
+	url := reqbody.URL
 	if url == "" {
 		return c.String(http.StatusBadRequest, "You passed an empty string!")
 	}
@@ -23,7 +31,11 @@ func SaveUrl(c echo.Context) error {
 
 
 func Redirect(c echo.Context) error {
-	shortUrl := c.Param("url")
+	var reqbody body
+	if err := c.Bind(&reqbody); err != nil {
+		return err
+	}
+	shortUrl := reqbody.URL
 	if shortUrl == "" {
 		return c.String(http.StatusBadRequest, "Your passed url is empty!")
 	}
