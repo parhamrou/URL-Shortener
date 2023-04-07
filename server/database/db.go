@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"github.com/parhamrou/URL-Shortener/server/link"
 )
 
 const (
@@ -23,6 +24,13 @@ func Connect() error {
 	return err
 }
 
-func AddLink(link *Link) {
-	link
+func AddLink(l *link.Link) error {
+	return db.Model(&link.Link{}).Create(l).Error
+}
+
+
+func GetLink(shortLink string) (*link.Link, error) {
+	var l link.Link
+	result := db.First(&l, shortLink)
+	return &l, result.Error
 }

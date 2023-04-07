@@ -20,10 +20,10 @@ func GetShortLink(url string) *Link {
 		trueLink = "http://" + trueLink
 	} 
 	bytes := md5.Sum([]byte(trueLink))
-	hashedLink := urlBase + base64.StdEncoding.EncodeToString(bytes[:])[:6]
+	shortLink := "http://" + urlBase + base64.StdEncoding.EncodeToString(bytes[:])[:6]
 	link := Link{
 		OriginalLink: trueLink,
-		ShortLink: hashedLink,
+		ShortLink: shortLink,
 	}
 	return &link
 }

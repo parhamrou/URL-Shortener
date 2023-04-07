@@ -1,10 +1,12 @@
 package api
 
 import (
-	"net/http"
-	"github.com/labstack/echo/v4"
-	"github.com/parhamrou/URL-Shortener/server/link"
+	   "net/http"
+	   "github.com/labstack/echo/v4"
+	   "github.com/parhamrou/URL-Shortener/server/link"
+	db "github.com/parhamrou/URL-Shortener/server/database"
 )
+
 
 func SaveUrl(c echo.Context) error {
 	url := c.Param("url")
@@ -25,14 +27,14 @@ func Redirect(c echo.Context) error {
 	if shortUrl == "" {
 		return c.String(http.StatusBadRequest, "Your passed url is empty!")
 	}
-	link, err := db.getLink(shortUrl)
+	link, err := db.GetLink(shortUrl)
 	if err != nil {
 		return err
 	}
 	if link == nil {
 		return c.String(http.StatusNotFound, "Invalied URL!")
-	} else{
-		return c.Redirect(http.StatusOK, link.Original)
+	} else {
+		return c.Redirect(http.StatusOK, link.OriginalLink)
 	} 
 }
 
