@@ -46,7 +46,7 @@ func Redirect(c echo.Context) error {
 	if link == nil {
 		return c.String(http.StatusNotFound, "Invalied URL!")
 	} else {
-		return c.Redirect(http.StatusOK, link.OriginalLink)
+		return c.Redirect(http.StatusTemporaryRedirect, link.OriginalLink)
 	} 
 }
 

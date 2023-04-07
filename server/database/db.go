@@ -25,12 +25,12 @@ func Connect() error {
 }
 
 func AddLink(l *link.Link) error {
-	return db.Model(&link.Link{}).Create(l).Error
+	return db.Table("addresses").Create(l).Error
 }
 
 
 func GetLink(shortLink string) (*link.Link, error) {
 	var l link.Link
-	result := db.First(&l, shortLink)
+	result := db.Table("addresses").Where("short_link = ?", shortLink).First(&l)
 	return &l, result.Error
 }
