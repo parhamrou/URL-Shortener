@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
-	api "github.com/parhamrou/URL-Shortener/server/endpoints"
-	db  "github.com/parhamrou/URL-Shortener/server/database"
+	api "github.com/parhamrou/URL-Shortener/endpoints"
+	db  "github.com/parhamrou/URL-Shortener/database"
 )
 
 func main() {

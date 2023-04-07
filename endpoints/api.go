@@ -3,8 +3,8 @@ package api
 import (
 	   "net/http"
 	   "github.com/labstack/echo/v4"
-	   "github.com/parhamrou/URL-Shortener/server/link"
-	db "github.com/parhamrou/URL-Shortener/server/database"
+	   "github.com/parhamrou/URL-Shortener/link"
+	db "github.com/parhamrou/URL-Shortener/database"
 )
 
 type body struct {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"github.com/parhamrou/URL-Shortener/server/link"
+	"github.com/parhamrou/URL-Shortener/link"
 )
 
 const (
