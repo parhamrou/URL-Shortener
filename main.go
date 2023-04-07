@@ -7,12 +7,10 @@ import (
 )
 
 func main() {
-	if db.Connect() != nil {
-		return  
-	}
 	e := echo.New()
 	e.POST("/api/shortener", api.SaveUrl)
 	e.GET("/api/shortener", api.Redirect)
+	e.Logger.Fatal(db.Connect())
 	e.Logger.Print("Listening on port 8080...\n")
 	e.Logger.Fatal(e.Start(":8080"))
 }
